@@ -228,7 +228,7 @@ ItemEvents.rightClicked('kubejs:tuning_wrench', event => {
     const pos = event.target.block.getPos();
     const pipePitch = event.target.block.entityData['Pitch'];
     const player = event.player;
-    if (!player.isCreative) {   //survival
+    if (!player.isCreative()) {   //survival
         if (player.inventory.contains("create:redstone_link")) { //only works if they have redstone link in inventory
             player.inventory.removeItem("create:redstone_link")
             placeRedstoneLink(event, player, pos, pipePitch);  
@@ -242,3 +242,4 @@ ItemEvents.rightClicked('kubejs:tuning_wrench', event => {
     
     
 })
+
