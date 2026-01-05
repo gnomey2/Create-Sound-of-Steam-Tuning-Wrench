@@ -1,11 +1,12 @@
-# Create: Sound of Steam: Tuning Wrench <img width="200" height="200" alt="New_Create_Logo_Background" src="https://github.com/user-attachments/assets/cf4afd90-1e0d-449c-a7d3-6d13016d8fc0" />
+<p align="center"><img width="180" height="180" alt="New_Create_Logo_Background" src="https://github.com/user-attachments/assets/cf4afd90-1e0d-449c-a7d3-6d13016d8fc0" /></p>
+<h1 align="center">Create: Sound of Steam: Tuning Wrench </h1>
 
-An addon for sound of steam that lets you set redstone link channels automatically
+<b>A survival friendly addon for sound of steam that lets you set redstone link channels automatically
 
-Right-click a pipe with the wrench, and the correct redstone link frequency block is placed underneath.
+TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link is placed underneath.</b>
 
 
-## Requirements
+# Requirements
 
 - Minecraft Forge 1.20.1
 - KubeJS 1.20.1
@@ -14,7 +15,7 @@ Right-click a pipe with the wrench, and the correct redstone link frequency bloc
 
 
 
-## Installation
+# Installation
 
 1. Make sure KubeJS is installed and working.
 2. Download this package.
@@ -24,7 +25,7 @@ Right-click a pipe with the wrench, and the correct redstone link frequency bloc
 
 
 
-## Usage
+# Usage
 
 1. Crafting:
 <img width="463" height="222" alt="Screenshot 2026-01-04 184852" src="https://github.com/user-attachments/assets/b2a3ab6f-dfb6-4c59-8b84-7e0bc8ae43fb" />
@@ -37,7 +38,7 @@ Note: this is intended to be used with the windchests. it will not work with flu
 **Survival Use:** the wrench will take redstone links from your inventory when using. It will not work if there are none left.
 
 
-## Credits
+# Credits
 Thank you to ABathInThyme for writing the origonal script and lots of KubeJs help!
 
 
