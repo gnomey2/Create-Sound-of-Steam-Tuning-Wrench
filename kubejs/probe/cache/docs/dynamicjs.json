@@ -1,0 +1,427 @@
+{
+    "properties": [
+        {
+            "type": "property:mod",
+            "mod": "dynamicjs"
+        }
+    ],
+    "classes": [
+        {
+            "type": "document:class",
+            "className": "moe.wolfgirl.dynamicjs.clazz.ByteBuddyBase",
+            "methods": [
+                {
+                    "type": "document:method",
+                    "name": "build",
+                    "static": false,
+                    "abstract": false,
+                    "params": [],
+                    "variables": [],
+                    "returns": {
+                        "type": "type:class",
+                        "name": "java.lang.Object"
+                    },
+                    "properties": [
+                        {
+                            "type": "property:returns",
+                            "returns": {
+                                "type": "type:parameterized",
+                                "base": {
+                                    "type": "type:class",
+                                    "name": "java.lang.Class"
+                                },
+                                "params": [
+                                    {
+                                        "type": "type:variable",
+                                        "name": "T",
+                                        "bounds": []
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "properties": [
+                        {
+                            "index": 0,
+                            "type": "property:modify",
+                            "name": "name",
+                            "newType": {
+                                "type": "type:primitive",
+                                "name": "keyof InstanceType<T>"
+                            }
+                        },
+                        {
+                            "index": 1,
+                            "type": "property:modify",
+                            "name": "callback",
+                            "newType": {
+                                "type": "type:parameterized",
+                                "params": [
+                                    {
+                                        "type": "type:parameterized",
+                                        "params": [
+                                            {
+                                                "type": "type:primitive",
+                                                "name": "InstanceType<T>",
+                                                "bounds": []
+                                            }
+                                        ],
+                                        "base": {
+                                            "type": "type:class",
+                                            "name": "moe.wolfgirl.dynamicjs.clazz.CallDelegator$CallInfo"
+                                        }
+                                    },
+                                    {
+                                        "type": "type:class",
+                                        "name": "java.lang.Object"
+                                    }
+                                ],
+                                "base": {
+                                    "type": "type:class",
+                                    "name": "java.util.function.Function"
+                                }
+                            }
+                        }
+                    ],
+                    "type": "document:method",
+                    "name": "override",
+                    "static": false,
+                    "abstract": false,
+                    "params": [
+                        {
+                            "type": "property:param",
+                            "name": "name",
+                            "paramType": {
+                                "type": "type:class",
+                                "name": "java.lang.String"
+                            },
+                            "varArg": false
+                        },
+                        {
+                            "type": "property:param",
+                            "name": "callback",
+                            "paramType": {
+                                "type": "type:parameterized",
+                                "params": [
+                                    {
+                                        "type": "type:parameterized",
+                                        "params": [
+                                            {
+                                                "type": "type:variable",
+                                                "name": "T",
+                                                "bounds": []
+                                            }
+                                        ],
+                                        "base": {
+                                            "type": "type:class",
+                                            "name": "moe.wolfgirl.dynamicjs.clazz.CallDelegator$CallInfo"
+                                        }
+                                    },
+                                    {
+                                        "type": "type:class",
+                                        "name": "java.lang.Object"
+                                    }
+                                ],
+                                "base": {
+                                    "type": "type:class",
+                                    "name": "java.util.function.Function"
+                                }
+                            },
+                            "varArg": false
+                        }
+                    ],
+                    "variables": [],
+                    "returns": {
+                        "type": "type:parameterized",
+                        "params": [
+                            {
+                                "type": "type:variable",
+                                "name": "T",
+                                "bounds": []
+                            }
+                        ],
+                        "base": {
+                            "type": "type:class",
+                            "name": "moe.wolfgirl.dynamicjs.clazz.ByteBuddyBase"
+                        }
+                    }
+                },
+                {
+                    "type": "document:method",
+                    "name": "impl",
+                    "static": false,
+                    "abstract": false,
+                    "properties": [
+                        {
+                            "type": "property:modify",
+                            "name": "impl",
+                            "index": 1,
+                            "newType": {
+                                "type": "type:parameterized",
+                                "params": [
+                                    {
+                                        "type": "type:parameterized",
+                                        "params": [
+                                            {
+                                                "type": "type:variable",
+                                                "name": "Q",
+                                                "bounds": []
+                                            },
+                                            {
+                                                "type": "type:primitive",
+                                                "name": "InstanceType<T>",
+                                                "bounds": []
+                                            }
+                                        ],
+                                        "base": {
+                                            "type": "type:class",
+                                            "name": "moe.wolfgirl.dynamicjs.clazz.InterfaceImplementation"
+                                        }
+                                    }
+                                ],
+                                "base": {
+                                    "type": "type:class",
+                                    "name": "java.util.function.Consumer"
+                                }
+                            }
+                        }
+                    ],
+                    "params": [
+                        {
+                            "type": "property:param",
+                            "name": "clazz",
+                            "paramType": {
+                                "type": "type:parameterized",
+                                "params": [
+                                    {
+                                        "type": "type:variable",
+                                        "name": "Q",
+                                        "bounds": []
+                                    }
+                                ],
+                                "base": {
+                                    "type": "type:class",
+                                    "name": "java.lang.Class"
+                                }
+                            },
+                            "varArg": false
+                        },
+                        {
+                            "type": "property:param",
+                            "name": "impl",
+                            "paramType": {
+                                "type": "type:parameterized",
+                                "params": [
+                                    {
+                                        "type": "type:parameterized",
+                                        "params": [
+                                            {
+                                                "type": "type:variable",
+                                                "name": "Q",
+                                                "bounds": []
+                                            },
+                                            {
+                                                "type": "type:variable",
+                                                "name": "T",
+                                                "bounds": []
+                                            }
+                                        ],
+                                        "base": {
+                                            "type": "type:class",
+                                            "name": "moe.wolfgirl.dynamicjs.clazz.InterfaceImplementation"
+                                        }
+                                    }
+                                ],
+                                "base": {
+                                    "type": "type:class",
+                                    "name": "java.util.function.Consumer"
+                                }
+                            },
+                            "varArg": false
+                        }
+                    ],
+                    "variables": [
+                        {
+                            "type": "type:variable",
+                            "name": "Q",
+                            "bounds": []
+                        }
+                    ],
+                    "returns": {
+                        "type": "type:parameterized",
+                        "params": [
+                            {
+                                "type": "type:variable",
+                                "name": "T",
+                                "bounds": []
+                            }
+                        ],
+                        "base": {
+                            "type": "type:class",
+                            "name": "moe.wolfgirl.dynamicjs.clazz.ByteBuddyBase"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "type": "document:class",
+            "className": "moe.wolfgirl.dynamicjs.clazz.CallDelegator$CallInfo",
+            "methods": [
+                {
+                    "type": "document:method",
+                    "name": "getParent",
+                    "static": false,
+                    "abstract": false,
+                    "params": [],
+                    "variables": [],
+                    "returns": {
+                        "type": "type:class",
+                        "name": "java.lang.Object"
+                    },
+                    "properties": [
+                        {
+                            "type": "property:returns",
+                            "returns": {
+                                "type": "type:variable",
+                                "name": "T",
+                                "bounds": []
+                            }
+                        }
+                    ]
+                }
+            ],
+            "variables": [
+                {
+                    "type": "type:variable",
+                    "name": "T",
+                    "bounds": []
+                },
+                {
+                    "type": "type:variable",
+                    "name": "A",
+                    "bounds": []
+                }
+            ]
+        },
+        {
+            "type": "document:class",
+            "className": "moe.wolfgirl.dynamicjs.clazz.InterfaceImplementation",
+            "methods": [
+                {
+                    "type": "document:method",
+                    "name": "override",
+                    "static": false,
+                    "abstract": false,
+                    "params": [
+                        {
+                            "type": "property:param",
+                            "name": "name",
+                            "paramType": {
+                                "type": "type:class",
+                                "name": "java.lang.String"
+                            },
+                            "varArg": false
+                        },
+                        {
+                            "type": "property:param",
+                            "name": "callback",
+                            "paramType": {
+                                "type": "type:parameterized",
+                                "params": [
+                                    {
+                                        "type": "type:parameterized",
+                                        "params": [
+                                            {
+                                                "type": "type:variable",
+                                                "name": "Q",
+                                                "bounds": []
+                                            }
+                                        ],
+                                        "base": {
+                                            "type": "type:class",
+                                            "name": "moe.wolfgirl.dynamicjs.clazz.CallDelegator$CallInfo"
+                                        }
+                                    },
+                                    {
+                                        "type": "type:class",
+                                        "name": "java.lang.Object"
+                                    }
+                                ],
+                                "base": {
+                                    "type": "type:class",
+                                    "name": "java.util.function.Function"
+                                }
+                            },
+                            "varArg": false
+                        }
+                    ],
+                    "variables": [],
+                    "returns": {
+                        "type": "type:parameterized",
+                        "params": [
+                            {
+                                "type": "type:variable",
+                                "name": "Q",
+                                "bounds": []
+                            },
+                            {
+                                "type": "type:variable",
+                                "name": "T",
+                                "bounds": []
+                            }
+                        ],
+                        "base": {
+                            "type": "type:class",
+                            "name": "moe.wolfgirl.dynamicjs.clazz.InterfaceImplementation"
+                        }
+                    },
+                    "properties": [
+                        {
+                            "type": "property:modify",
+                            "index": 0,
+                            "name": "name",
+                            "newType": {
+                                "type": "type:primitive",
+                                "name": "keyof Q"
+                            }
+                        },
+                        {
+                            "type": "property:modify",
+                            "index": 1,
+                            "name": "callback",
+                            "newType": {
+                                "type": "type:parameterized",
+                                "params": [
+                                    {
+                                        "type": "type:parameterized",
+                                        "params": [
+                                            {
+                                                "type": "type:primitive",
+                                                "name": "Q & T"
+                                            }
+                                        ],
+                                        "base": {
+                                            "type": "type:class",
+                                            "name": "moe.wolfgirl.dynamicjs.clazz.CallDelegator$CallInfo"
+                                        }
+                                    },
+                                    {
+                                        "type": "type:class",
+                                        "name": "java.lang.Object"
+                                    }
+                                ],
+                                "base": {
+                                    "type": "type:class",
+                                    "name": "java.util.function.Function"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
