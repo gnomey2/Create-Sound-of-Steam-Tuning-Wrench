@@ -17,12 +17,29 @@ TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link i
 
 # Installation
 
-1. Make sure KubeJS is installed and working.
 2. Download this package.
 3. Copy the included `kubejs/` folder into your instance or server root.
 
 **Do not put this in the mods folder.**
 
+# Dtailed instructions for curseforge:
+1. Download from github by clicking the green <>code button at the top of this page and in the menu download zip
+2. Install KubeJS to the profile
+3. Open folder
+<img width="400" height="264" alt="image" src="https://github.com/user-attachments/assets/4ed1db71-a2ed-4f22-9a92-0131617e764b" />
+
+4. Extract the zip folder to this directory
+5. It should look like this (if you have already run the game, there will be more folders.)
+
+<img width="428" height="128" alt="image" src="https://github.com/user-attachments/assets/f72c705b-9a51-4440-88e6-e075a994c918" />
+
+
+# Future Plans
+
+* Placing links on sides of windchests
+* Replacing existing links
+* Mutations
+* Ponder if necessary
 
 
 # Usage
