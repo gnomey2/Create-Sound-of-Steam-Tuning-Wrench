@@ -132,7 +132,7 @@ const PALETTES = {
 const PIPE_OCTAVES = {
     piccolo: 8,
     prestant: 7,
-    hohlflote: 7,
+    hohlflute: 7,
     gamba: 7,
     diapason: 6,
     "english horn": 6,
@@ -242,3 +242,4 @@ ItemEvents.rightClicked('kubejs:tuning_wrench', event => {
     
     
 })
+
