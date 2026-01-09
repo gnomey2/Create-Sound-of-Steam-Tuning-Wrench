@@ -230,9 +230,9 @@ ItemEvents.rightClicked('kubejs:tuning_wrench', event => {
     const player = event.player;
     if (!player.isCreative()) {   //survival
         if (player.inventory.contains("create:redstone_link")) { //only works if they have redstone link in inventory
-            player.inventory.removeItem("create:redstone_link")
+            player.inventory.removeItem(player.inventory.findSlotMatchingItem("create:redstone_link"),1);
             placeRedstoneLink(event, player, pos, pipePitch);  
-            player.swing(event.hand, true)
+            player.swing(event.hand, true);
         }
     }
     else {
@@ -242,4 +242,3 @@ ItemEvents.rightClicked('kubejs:tuning_wrench', event => {
     
     
 })
-
