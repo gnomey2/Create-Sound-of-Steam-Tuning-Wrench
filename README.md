@@ -34,12 +34,6 @@ TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link i
 <img width="428" height="128" alt="image" src="https://github.com/user-attachments/assets/f72c705b-9a51-4440-88e6-e075a994c918" />
 
 
-# Future Plans
-
-* Placing links on sides of windchests
-* Replacing existing links
-* Mutations
-* Ponder if necessary
 
 
 # Usage
@@ -54,9 +48,16 @@ Note: this is intended to be used with the windchests. it will not work with flu
 
 **Survival Use:** the wrench will take redstone links from your inventory when using. It will not work if there are none left.
 
+# Future Plans
+
+* Placing links on sides of windchests
+* Replacing existing links
+* Mutations
+* Ponder if necessary
+
 
 # Credits
-Thank you to ABathInThyme for writing the origonal script and lots of KubeJs help!
+Thank you to ABathInThyme for writing the original script and lots of KubeJs help!
 
 
 
