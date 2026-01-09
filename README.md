@@ -56,6 +56,14 @@ Note: this is intended to be used with the windchests. it will not work with flu
 * Ponder if necessary
 
 
+# Known Issues
+
+* A piccolo with no extensions will not get its second channel set correctly
+* The lowest 2 octaves of posaune do not work
+* Hohlflute might not work™
+* Unknown issues™™™™™™™™™™
+
+
 # Credits
 Thank you to ABathInThyme for writing the original script and lots of KubeJs help!
 
