@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "ES5",
+            "ES2015"
+        ],
+        "rootDirs": [
+            "server_scripts",
+            "startup_scripts",
+            "client_scripts"
+        ],
+        "target": "ES2015"
+    }
+}
