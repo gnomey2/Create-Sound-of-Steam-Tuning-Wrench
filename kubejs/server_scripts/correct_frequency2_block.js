@@ -144,8 +144,8 @@ const PIPE_OCTAVES = {
     "vox humana": 6,
     "haunted whistle": 6,
     nasard: 6,  
-    subbass: 4,
-    posaune: 2,
+    subbass: 5,
+    posaune: 4,
 };
 
 const SIZE_OFFSET = { tiny: 0, small: -1, medium: -2, large: -3, huge: -4 };
@@ -242,4 +242,5 @@ ItemEvents.rightClicked('kubejs:tuning_wrench', event => {
     
     
 })
+
 
