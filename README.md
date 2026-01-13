@@ -13,7 +13,12 @@ TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link i
 - Create 6
 - Sound of Steam (theoretically any version that's compatible with the above, but un-tested)
 
+# Version
 
+If you want the 1.21 version, first go to the top right of this page, and click the button that says 1.20, and in the dropdown, select 1.21 
+<img width="170" height="155" alt="image" src="https://github.com/user-attachments/assets/ce789a91-5f1f-4d37-8034-aa1f64ce3f37" />
+
+then proceeed with the rest of the instructions
 
 # Installation
 
