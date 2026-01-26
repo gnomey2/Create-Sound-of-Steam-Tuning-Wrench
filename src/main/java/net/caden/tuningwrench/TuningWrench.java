@@ -1,6 +1,10 @@
 package net.caden.tuningwrench;
 
 import com.mojang.logging.LogUtils;
+import net.caden.tuningwrench.item.ModCreativeModeTabs;
+import net.caden.tuningwrench.item.ModItems;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -16,17 +20,19 @@ import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(TuningWrench.MODID)
-public class TuningWrench
-{
-    // Define mod id in a common place for everything to reference
+public class TuningWrench {
+
     public static final String MODID = "tuningwrench";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public TuningWrench(FMLJavaModLoadingContext context)
-    {
+    public TuningWrench(FMLJavaModLoadingContext context) {
+
         IEventBus modEventBus = context.getModEventBus();
 
+        //CREATIVE TAB
+        ModCreativeModeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -43,8 +49,10 @@ public class TuningWrench
     }
 
     // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.TUNINGWRENCH);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
