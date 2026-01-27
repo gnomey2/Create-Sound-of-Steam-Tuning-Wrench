@@ -1,5 +1,4 @@
 {
-  "itemGroup.tuningwrench": "Example Mod Tab",
-  "block.tuningwrench.example_block": "Example Block",
-  "item.tuningwrench.example_item": "Example Item"
+  "item.tuningwrench.tunerswrench": "Tuning Wrench",
+  "creativetab.tuningwrenchtab": "Tuning Wrench"
 }
