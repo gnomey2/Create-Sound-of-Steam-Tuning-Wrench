@@ -5,13 +5,10 @@ import com.simibubi.create.content.redstone.link.RedstoneLinkBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PipeUtils {
@@ -25,9 +22,14 @@ public class PipeUtils {
             pitch = 0;
         }
 
-        int octave = PipeConstants.PIPE_OCTAVES.getOrDefault(pipe, 6)
+        int octave = (mode > 2) ? PipeConstants.PIPE_OCTAVES.getOrDefault(pipe, 6)
                 + PipeConstants.SIZE_OFFSET.getOrDefault(size, 0)
+                + fullLengthOffset : 6 + PipeConstants.SIZE_OFFSET.getOrDefault(size, 0)
                 + fullLengthOffset;
+
+
+
+
 
         int noteIndex = (12 - pitch) % 12;
         int noteOctave = pitch > 6 ? octave - 1 : octave; // octave changes at C
@@ -91,12 +93,12 @@ public class PipeUtils {
         Direction facing = Direction.DOWN;
 
         switch (mode) {
-            case 0 -> {
+            case 0, 3 -> {
                 y -= 2;
                 facing = Direction.DOWN;
             }
 
-            case 1, 2 -> {
+            case 1, 2, 4, 5 -> {
                 y -= 1;
 
                 // Convert player yaw to cardinal direction
@@ -108,7 +110,7 @@ public class PipeUtils {
                 else if (yaw >= -135 && yaw < -45) dir = Direction.EAST;
                 else dir = Direction.NORTH;
 
-                if (mode == 1) {
+                if (mode == 1 || mode == 4) {
                     facing = dir;
                     switch (dir) {
                         case NORTH -> z -= 1;
