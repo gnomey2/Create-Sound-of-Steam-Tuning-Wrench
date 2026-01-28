@@ -39,6 +39,8 @@ public class TuningWrench {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         COMPONENTS.register(modEventBus);
+
+        // Register Custom Events
         modEventBus.addListener(RegisterPayloadHandlersEvent.class, TuningWrenchPacketHandler::register);
         NeoForge.EVENT_BUS.addListener(InputEvent.MouseScrollingEvent.class, TunersWrenchScrollHandler::onScroll);
         NeoForge.EVENT_BUS.addListener(RenderGuiLayerEvent.Post.class, TunersWrenchOverlay::onRenderGui);
