@@ -53,6 +53,7 @@ public class TuningWrench {
 
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
