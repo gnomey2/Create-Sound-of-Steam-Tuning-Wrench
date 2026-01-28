@@ -3,3 +3,5 @@ It can be used to place on the bottom or side facing towards or away from the pl
 hold shift when hovering over the wrench for more info
 currently only works on 1.20.1. Once I finish, Anonym or I will port it to 1.21. Does not work with base create whistles. Survival friendly except it doesn't have a crafting recipe yet, sorry.
 I plan on releasing new versions soon™ that will make it better™. Updates will be on GitHub probably™
+
+Update: Ported to 1.21.1 and Works with base create whistles now
