@@ -14,10 +14,10 @@ repositories {
     maven {
         name = 'tterrag maven'
         url = 'https://maven.tterrag.com/'
-        url "https://cursemaven.com"
     }
     maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
     maven { url = "https://maven.ithundxr.dev/snapshots" } // Registrate
+    maven { url = "https://cursemaven.com" }
 }
 
 base {
@@ -110,6 +110,7 @@ dependencies {
     runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
     implementation "curse.maven:create-sound-of-steam-1196142:7315860"
+    implementation "curse.maven:create-expanded-steam-whistles-1436131:7539197"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

@@ -16,6 +16,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -106,12 +109,15 @@ public class TunersWrenchItem extends Item {
                 //player.sendSystemMessage(Component.literal(""));
             }
 
-
+            //get the tag for the expanded steam whistle without breaking everything
+            TagKey<Block> EXPANDED_STEAM_WHISTLE =
+                    BlockTags.create(ResourceLocation.fromNamespaceAndPath("expanded_steam_whistles", "feeling_valid"));
             BlockPos positionCLicked = pContext.getClickedPos();
             BlockState state = pContext.getLevel().getBlockState(positionCLicked);
             BlockEntity blockEntity = pContext.getLevel().getBlockEntity(positionCLicked);
-            if (blockEntity == null || !(blockEntity.getBlockState().is(AllTags.AllBlockTags.VALID_WHISTLE.tag) || blockEntity.equals(AllBlockEntityTypes.STEAM_WHISTLE))) {
-                return InteractionResult.FAIL;
+            if (blockEntity == null || !(blockEntity.getBlockState().is(AllTags.AllBlockTags.VALID_WHISTLE.tag)
+                    || blockEntity.getType() == AllBlockEntityTypes.STEAM_WHISTLE.get()
+                    || state.is(EXPANDED_STEAM_WHISTLE))) {
             }
             //get name
             Block block = state.getBlock();

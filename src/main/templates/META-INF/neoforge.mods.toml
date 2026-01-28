@@ -74,15 +74,23 @@ side = "BOTH"
 
 [[dependencies."${mod_id}"]]
 modId="create"
-mandatory=true
+type = "required"
 versionRange="[6.0.8,6.1.0)"
 ordering="AFTER"
 side="BOTH"
 
 [[dependencies."${mod_id}"]]
 modId="pipeorgans"
-mandatory=true
+type = "required"
 versionRange="[0.8.0+1.21.1,)"
+ordering="AFTER"
+side="BOTH"
+
+
+[[dependencies."${mod_id}"]]
+modId="expanded_steam_whistles"
+type = "optional"
+versionRange="[0.2-1.21.1,)"
 ordering="AFTER"
 side="BOTH"
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares
