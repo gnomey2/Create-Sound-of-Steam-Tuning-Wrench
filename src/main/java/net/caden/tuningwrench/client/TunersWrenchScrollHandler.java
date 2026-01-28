@@ -43,7 +43,7 @@ public class TunersWrenchScrollHandler {
         if (stack.get(TunersWrenchItem.MODE) != null) {
             mode = stack.get(TunersWrenchItem.MODE);
         }
-        mode += event.getScrollDeltaX() > 0 ? 1 : -1;
+        mode += event.getScrollDeltaY() > 0 ? 1 : -1;
         mode = Mth.clamp(mode, 0, MAX_MODES - 1);
 
         stack.set(TunersWrenchItem.MODE, mode);
