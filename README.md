@@ -5,6 +5,7 @@
 
 TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link is placed underneath.</b>
 
+# Depricated! go to 1.20.1-forge
 
 # Requirements
 
