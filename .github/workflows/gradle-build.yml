@@ -4,7 +4,6 @@ on:
     branches: 
       - 1.20.1-forge
       - 1.21-neoforge
-  pull_request:
 
 jobs:
   build:
