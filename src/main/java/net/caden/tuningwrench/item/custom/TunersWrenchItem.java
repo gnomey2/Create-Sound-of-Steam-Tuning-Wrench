@@ -5,7 +5,6 @@ import com.mojang.serialization.Codec;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
 import net.caden.tuningwrench.PipeUtils;
-import net.caden.tuningwrench.TuningWrench;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -139,10 +138,15 @@ public class TunersWrenchItem extends Item {
             Property<?> sizeProp = state.getBlock()
                     .getStateDefinition()
                     .getProperty("size");
-            String pipeSize;
+            Property<?> wallProp = state.getBlock()
+                    .getStateDefinition()
+                    .getProperty("wall");
             assert sizeProp != null;
-            Comparable<?> value = state.getValue(sizeProp);
-            pipeSize = value.toString().toLowerCase();
+            assert wallProp != null;
+            Comparable<?> sizePropValue = state.getValue(sizeProp);
+            Comparable<?> wallPropValue = state.getValue(wallProp);
+            String pipeSize = sizePropValue.toString().toLowerCase();
+            boolean isOnWall = Boolean.parseBoolean(wallPropValue.toString());
 
             //get mode
             ItemStack held = player.getMainHandItem();
@@ -152,10 +156,10 @@ public class TunersWrenchItem extends Item {
             String reqBlock = PipeUtils.getReqLinkBlock(blockId, pipeSize, pitch, mode);
 
 
-
             //get position of redstone link
             PipeUtils.OffsetResult result =
-                    PipeUtils.getOffsetCoords(mode, player, positionCLicked);
+                    PipeUtils.getOffsetCoords(mode, player, positionCLicked, isOnWall);
+            if (result == null) return InteractionResult.FAIL;
             BlockPos linkPos = result.pos();
 
             if(!player.level().isEmptyBlock(linkPos)) {

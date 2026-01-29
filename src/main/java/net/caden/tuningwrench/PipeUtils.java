@@ -1,14 +1,18 @@
 package net.caden.tuningwrench;
 
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.content.redstone.link.RedstoneLinkBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.neoforged.neoforge.common.NeoForge;
+
 import java.util.List;
 
 public class PipeUtils {
@@ -85,24 +89,33 @@ public class PipeUtils {
     public record OffsetResult(BlockPos pos, Direction facing) {}
 
 
-    public static OffsetResult getOffsetCoords(int mode, Player player, BlockPos initialPos) {
+    public static OffsetResult getOffsetCoords(int mode, Player player, BlockPos initialPos, boolean isOnWall) {
         int x = initialPos.getX();
         int y = initialPos.getY();
         int z = initialPos.getZ();
 
         Direction facing = Direction.DOWN;
 
+        float yaw = player.getYRot();
+
         switch (mode) {
             case 0,3 -> {
-                y -= 2;
+                if (isOnWall) {
+                    if (yaw >= -45 && yaw < 45) z += 1;
+                    else if (yaw >= 45 && yaw < 135) x -= 1;
+                    else if (yaw >= -135 && yaw < -45) x += 1;
+                    else z -= 1;
+                    y -= 1;
+                } else {
+                    y -= 2;
+                }
                 facing = Direction.DOWN;
             }
 
             case 1, 2, 4, 5 -> {
-                y -= 1;
+                if (!isOnWall) y -= 1;
 
                 // Convert player yaw to cardinal direction
-                float yaw = player.getYRot();
                 Direction dir;
 
                 if (yaw >= -45 && yaw < 45) dir = Direction.SOUTH;
@@ -112,19 +125,34 @@ public class PipeUtils {
 
                 if (mode == 1 || mode == 4) {
                     facing = dir;
-                    switch (dir) {
-                        case NORTH -> z -= 1;
-                        case SOUTH -> z += 1;
-                        case WEST  -> x -= 1;
-                        case EAST  -> x += 1;
+                    if (isOnWall) {
+                        switch (dir) {
+                            case NORTH -> z -= 2;
+                            case SOUTH -> z += 2;
+                            case WEST  -> x -= 2;
+                            case EAST  -> x += 2;
+                        }
+                    } else {
+                        switch (dir) {
+                            case NORTH -> z -= 1;
+                            case SOUTH -> z += 1;
+                            case WEST  -> x -= 1;
+                            case EAST  -> x += 1;
+                        }
                     }
                 } else { // mode 2
-                    facing = dir.getOpposite();
-                    switch (dir) {
-                        case NORTH -> z += 1;
-                        case SOUTH -> z -= 1;
-                        case WEST  -> x += 1;
-                        case EAST  -> x -= 1;
+                    if (!isOnWall) {
+                        facing = dir.getOpposite();
+                        switch (dir) {
+                            case NORTH -> z += 1;
+                            case SOUTH -> z -= 1;
+                            case WEST  -> x += 1;
+                            case EAST  -> x -= 1;
+                        }
+                    } else {
+                        player.displayClientMessage(Component.translatable("chat.tuningwrench.mode_not_usable"), true);
+                        player.playNotifySound(AllSoundEvents.DENY.getMainEvent(), player.getSoundSource(), 1, 1);
+                        return null;
                     }
                 }
             }
