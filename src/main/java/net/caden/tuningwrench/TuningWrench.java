@@ -30,7 +30,7 @@ import static net.caden.tuningwrench.item.custom.TunersWrenchItem.COMPONENTS;
 @Mod(TuningWrench.MODID)
 public class TuningWrench {
     public static final String MODID = "tuningwrench";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public TuningWrench(IEventBus modEventBus, ModContainer modContainer) {
         ModCreativeModeTabs.register(modEventBus);

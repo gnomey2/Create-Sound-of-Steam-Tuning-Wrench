@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
 import net.caden.tuningwrench.PipeUtils;
+import net.caden.tuningwrench.TuningWrench;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -118,6 +119,7 @@ public class TunersWrenchItem extends Item {
             if (blockEntity == null || !(blockEntity.getBlockState().is(AllTags.AllBlockTags.VALID_WHISTLE.tag)
                     || blockEntity.getType() == AllBlockEntityTypes.STEAM_WHISTLE.get()
                     || state.is(EXPANDED_STEAM_WHISTLE))) {
+                return InteractionResult.FAIL;
             }
             //get name
             Block block = state.getBlock();
@@ -133,22 +135,18 @@ public class TunersWrenchItem extends Item {
                 CompoundTag tag = blockEntity.saveWithoutMetadata(registries);
 
             int pitch = tag.getInt("Pitch");
-
             //get size
             Property<?> sizeProp = state.getBlock()
                     .getStateDefinition()
                     .getProperty("size");
-            String pipeSize = "";
-            if (sizeProp != null) {
-                Comparable<?> value = state.getValue(sizeProp);
-
-                pipeSize = value.toString().toLowerCase();
-            }
+            String pipeSize;
+            assert sizeProp != null;
+            Comparable<?> value = state.getValue(sizeProp);
+            pipeSize = value.toString().toLowerCase();
 
             //get mode
             ItemStack held = player.getMainHandItem();
             int mode = held.get(MODE);
-
 
             //pitch (int) pipeSize (str) mode (int)
             String reqBlock = PipeUtils.getReqLinkBlock(blockId, pipeSize, pitch, mode);

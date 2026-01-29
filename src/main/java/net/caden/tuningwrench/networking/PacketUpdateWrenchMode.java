@@ -45,7 +45,7 @@ public record PacketUpdateWrenchMode(int mode) implements CustomPacketPayload {
 
             ItemStack held = player.getMainHandItem();
             if (held.is(ModItems.TUNINGWRENCH.get())) {
-                held.get(TunersWrenchItem.MODE);
+                held.set(TunersWrenchItem.MODE, pkt.mode());
             }
         });
     }

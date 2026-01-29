@@ -10,7 +10,7 @@ public final class TuningWrenchPacketHandler {
 
     public static void register(RegisterPayloadHandlersEvent event) {
         event.registrar(TuningWrench.MODID)
-                .playBidirectional(
+                .playToServer(
                         PacketUpdateWrenchMode.TYPE,
                         PacketUpdateWrenchMode.STREAM_CODEC,
                         PacketUpdateWrenchMode::handle
