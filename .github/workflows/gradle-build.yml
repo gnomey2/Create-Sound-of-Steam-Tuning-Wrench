@@ -24,7 +24,7 @@ jobs:
       - name: build
         run: ./gradlew build
 
-      - name: upload "-all" jar
+      - name: upload jar
         uses: actions/upload-artifact@v4
         with:
-          path: build/libs/*-all.jar
+          path: build/libs/*.jar
