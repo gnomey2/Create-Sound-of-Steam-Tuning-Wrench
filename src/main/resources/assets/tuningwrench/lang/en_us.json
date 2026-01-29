@@ -1,4 +1,5 @@
 {
   "item.tuningwrench.tunerswrench": "Tuning Wrench",
-  "creativetab.tuningwrenchtab": "Tuning Wrench"
+  "creativetab.tuningwrenchtab": "Tuning Wrench",
+  "chat.tuningwrench.mode_not_usable": "§4You can't use this mode on wall pipes!"
 }
