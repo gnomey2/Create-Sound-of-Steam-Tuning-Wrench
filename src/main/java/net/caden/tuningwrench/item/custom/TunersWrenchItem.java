@@ -5,6 +5,8 @@ import com.finchy.pipeorgans.init.AllTags;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleBlockEntity;
+import com.simibubi.create.content.equipment.wrench.IWrenchable;
+import com.simibubi.create.content.redstone.link.RedstoneLinkBlock;
 import net.caden.tuningwrench.PipeUtils;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -25,6 +27,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -67,8 +70,22 @@ public class TunersWrenchItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
+
+        BlockPos positionCLicked = pContext.getClickedPos();
+        BlockState state = pContext.getLevel().getBlockState(positionCLicked);
+        BlockEntity blockEntity = pContext.getLevel().getBlockEntity(positionCLicked);
+
+        //Redstone Link pickup logic
+        Player player = pContext.getPlayer();
+        if (player == null)
+            return InteractionResult.PASS;
+
+        if (player.isShiftKeyDown() && state.getBlock() instanceof RedstoneLinkBlock) {
+            return pickupRedstoneLink(pContext);
+        }
+
+        //Now you can do the linking magic
         if(!pContext.getLevel().isClientSide()) {
-            Player player = pContext.getPlayer();
             Boolean isLink = false;
             ItemStack stackWithLink = null;
 
@@ -95,9 +112,7 @@ public class TunersWrenchItem extends Item {
             TagKey<Block> EXPANDED_STEAM_WHISTLE =
                     BlockTags.create(ResourceLocation.fromNamespaceAndPath("expanded_steam_whistles", "feeling_valid"));
 
-            BlockPos positionCLicked = pContext.getClickedPos();
-            BlockState state = pContext.getLevel().getBlockState(positionCLicked);
-            BlockEntity blockEntity = pContext.getLevel().getBlockEntity(positionCLicked);
+
 
             if (blockEntity == null || !(blockEntity.getBlockState().is(AllTags.AllBlockTags.VALID_WHISTLE.tag)
                     || blockEntity.getType() == AllBlockEntityTypes.STEAM_WHISTLE.get()
@@ -157,8 +172,31 @@ public class TunersWrenchItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
+    //Helper class to recreate how Create's wrench does pickup
 
+    private InteractionResult pickupRedstoneLink(UseOnContext pContext) {
+        Level level = pContext.getLevel();
+        BlockPos pos = pContext.getClickedPos();
+        Player player = pContext.getPlayer();
+        BlockState state = level.getBlockState(pos);
 
+        if (!(level instanceof net.minecraft.server.level.ServerLevel serverLevel))
+            return InteractionResult.SUCCESS;
 
+        if (player != null && !player.isCreative()) {
+            Block.getDrops(state, serverLevel, pos,
+                            level.getBlockEntity(pos), player, pContext.getItemInHand())
+                    .forEach(stack ->
+                            player.getInventory().placeItemBackInInventory(stack));
+        }
 
+        state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, true);
+        level.destroyBlock(pos, false);
+
+        com.simibubi.create.AllSoundEvents.WRENCH_REMOVE
+                .playOnServer(level, pos, 1f,
+                        com.simibubi.create.Create.RANDOM.nextFloat() * 0.5f + 0.5f);
+
+        return InteractionResult.SUCCESS;
+    }
 }
