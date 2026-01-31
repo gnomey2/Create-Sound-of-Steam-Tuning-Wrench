@@ -151,6 +151,9 @@ public class TunersWrenchItem extends Item {
             //get mode
             ItemStack held = player.getMainHandItem();
             int mode = held.get(MODE);
+            if (mode == null) {
+                mode = 1;
+            }
 
             //pitch (int) pipeSize (str) mode (int)
             String reqBlock = PipeUtils.getReqLinkBlock(blockId, pipeSize, pitch, mode);
