@@ -151,7 +151,7 @@ public class TunersWrenchItem extends Item {
             //get mode
             ItemStack held = player.getMainHandItem();
             int mode = held.get(MODE);
-            if (mode.equals(null)) {
+            if (mode < 1 || mode > 6) {
                 mode = 1;
             }
 
