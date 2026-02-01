@@ -110,7 +110,7 @@ public class TunersWrenchItem extends Item {
 
             //get the tag for the expanded steam whistle without breaking everything
             TagKey<Block> EXPANDED_STEAM_WHISTLE =
-                    BlockTags.create(ResourceLocation.fromNamespaceAndPath("expanded_steam_whistles", "feeling_valid"));
+                    BlockTags.create(new ResourceLocation("expanded_steam_whistles", "feeling_valid"));
 
 
 
