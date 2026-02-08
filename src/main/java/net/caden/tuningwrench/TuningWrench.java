@@ -25,22 +25,23 @@ public class TuningWrench {
     public static final String MODID = "tuningwrench";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public TuningWrench(FMLJavaModLoadingContext context) {
+    public TuningWrench() {
 
-        IEventBus modEventBus = context.getModEventBus();
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        //CREATIVE TAB
+        // CREATIVE TAB
         ModCreativeModeTabs.register(modEventBus);
 
+        // ITEMS
         ModItems.register(modEventBus);
-        // Register the commonSetup method for modloading
+
+        // Setup
         modEventBus.addListener(this::commonSetup);
 
-
-        // Register ourselves for server and other game events we are interested in
+        // Forge bus
         MinecraftForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
+        // Creative tab contents
         modEventBus.addListener(this::addCreative);
     }
 
