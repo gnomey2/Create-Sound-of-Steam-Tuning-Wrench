@@ -3,8 +3,6 @@ package net.caden.tuningwrench.item.custom;
 import com.finchy.pipeorgans.init.AllTags;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.content.decoration.steamWhistle.WhistleBlockEntity;
-import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.redstone.link.RedstoneLinkBlock;
 import net.caden.tuningwrench.PipeUtils;
 import net.minecraft.client.gui.screens.Screen;
@@ -26,7 +24,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -46,15 +43,15 @@ public class TunersWrenchItem extends Item {
         tooltip.add(Component.literal("Hold Alt and scroll to change mode").withStyle(GRAY));
 
         tooltip.add(
-            Component.literal("Hold ").withStyle(DARK_GRAY)
-                    .append(
-                            Component.literal("[SHIFT]")
-                                    .withStyle(Screen.hasShiftDown() ? WHITE : GRAY)
-                    )
-                    .append(
-                            Component.literal(" for more")
-                                    .withStyle(DARK_GRAY)
-                    )
+                Component.literal("Hold ").withStyle(DARK_GRAY)
+                        .append(
+                                Component.literal("[SHIFT]")
+                                        .withStyle(Screen.hasShiftDown() ? WHITE : GRAY)
+                        )
+                        .append(
+                                Component.literal(" for more")
+                                        .withStyle(DARK_GRAY)
+                        )
         );
         //shift extra info
         if (Screen.hasShiftDown()) {
@@ -84,14 +81,10 @@ public class TunersWrenchItem extends Item {
         }
 
         //Now you can do the linking magic
-        if(!pContext.getLevel().isClientSide()) {
-            Boolean isLink = false;
-        if(!pContext.getLevel().isClientSide()) {
-            Player player = pContext.getPlayer();
+        if (!pContext.getLevel().isClientSide()) {
             boolean isLink = false;
             ItemStack stackWithLink = null;
 
-            assert player != null;
             if (!player.isCreative()) {
                 AbstractContainerMenu playerInv = player.inventoryMenu;
                 NonNullList<ItemStack> items = playerInv.getItems();
@@ -114,7 +107,6 @@ public class TunersWrenchItem extends Item {
             //get the tag for the expanded steam whistle without breaking everything
             TagKey<Block> EXPANDED_STEAM_WHISTLE =
                     BlockTags.create(new ResourceLocation("expanded_steam_whistles", "feeling_valid"));
-
 
 
             if (blockEntity == null || !(blockEntity.getBlockState().is(AllTags.AllBlockTags.VALID_WHISTLE.tag)
@@ -154,13 +146,12 @@ public class TunersWrenchItem extends Item {
             String reqBlock = PipeUtils.getReqLinkBlock(blockId, pipeSize, pitch, mode);
 
 
-
             //get position of redstone link
             PipeUtils.OffsetResult result =
                     PipeUtils.getOffsetCoords(mode, player, positionCLicked, isOnWall);
             if (result == null) return InteractionResult.FAIL;
             BlockPos linkPos = result.pos();
-            if(!player.level().isEmptyBlock(linkPos)) {
+            if (!player.level().isEmptyBlock(linkPos)) {
                 return InteractionResult.FAIL;
             }
 
@@ -168,8 +159,8 @@ public class TunersWrenchItem extends Item {
 
             PipeUtils.placeRedstoneLink(player.level(), linkPos, blockId, reqBlock, facing);
 
-            if(!player.isCreative()) {
-                if(isLink) {
+            if (!player.isCreative()) {
+                if (isLink) {
                     stackWithLink.shrink(1);
                 }
             }
