@@ -1,10 +1,8 @@
 package net.caden.tuningwrench.item.custom;
 
-import com.finchy.pipeorgans.init.AllBlockEntities;
 import com.finchy.pipeorgans.init.AllTags;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.content.decoration.steamWhistle.WhistleBlockEntity;
 import net.caden.tuningwrench.PipeUtils;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -69,12 +67,13 @@ public class TunersWrenchItem extends Item {
     public InteractionResult useOn(UseOnContext pContext) {
         if(!pContext.getLevel().isClientSide()) {
             Player player = pContext.getPlayer();
-            Boolean isLink = false;
+            boolean isLink = false;
             ItemStack stackWithLink = null;
 
+            assert player != null;
             if (!player.isCreative()) {
                 AbstractContainerMenu playerInv = player.inventoryMenu;
-                NonNullList items = playerInv.getItems();
+                NonNullList<ItemStack> items = playerInv.getItems();
 
                 for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                     ItemStack stack = player.getInventory().getItem(i);
@@ -118,12 +117,15 @@ public class TunersWrenchItem extends Item {
             Property<?> sizeProp = state.getBlock()
                     .getStateDefinition()
                     .getProperty("size");
-            String pipeSize = "";
-            if (sizeProp != null) {
-                Comparable<?> value = state.getValue(sizeProp);
-
-                pipeSize = value.toString().toLowerCase();
-            }
+            Property<?> wallProp = state.getBlock()
+                    .getStateDefinition()
+                    .getProperty("wall");
+            assert wallProp != null;
+            assert sizeProp != null;
+            Comparable<?> sizePropValue = state.getValue(sizeProp);
+            Comparable<?> wallPropValue = state.getValue(wallProp);
+            String pipeSize = sizePropValue.toString().toLowerCase();
+            boolean isOnWall = Boolean.parseBoolean(wallPropValue.toString());
 
             //get mode
             ItemStack held = player.getMainHandItem();
@@ -136,8 +138,8 @@ public class TunersWrenchItem extends Item {
 
             //get position of redstone link
             PipeUtils.OffsetResult result =
-                    PipeUtils.getOffsetCoords(mode, player, positionCLicked);
-
+                    PipeUtils.getOffsetCoords(mode, player, positionCLicked, isOnWall);
+            if (result == null) return InteractionResult.FAIL;
             BlockPos linkPos = result.pos();
             if(!player.level().isEmptyBlock(linkPos)) {
                 return InteractionResult.FAIL;
@@ -148,7 +150,7 @@ public class TunersWrenchItem extends Item {
             PipeUtils.placeRedstoneLink(player.level(), linkPos, blockId, reqBlock, facing);
 
             if(!player.isCreative()) {
-                if(isLink && stackWithLink != null) {
+                if(isLink) {
                     stackWithLink.shrink(1);
                 }
             }
