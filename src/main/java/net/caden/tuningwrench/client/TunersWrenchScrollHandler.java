@@ -26,10 +26,11 @@ public class TunersWrenchScrollHandler {
         MODE_NAMES.put(3, "Pitch Match Bottom");
         MODE_NAMES.put(4, "Pitch Match Face Away");
         MODE_NAMES.put(5, "Pitch Match Face Towards");
+        MODE_NAMES.put(6, "Pitch Match Behind (§4Can place Link in air!)");
     }
 
 
-    private static final int MAX_MODES = 6;
+    private static final int MAX_MODES = 7;
     private static int mode;
     @SubscribeEvent
     public static void onScroll(InputEvent.MouseScrollingEvent event) {

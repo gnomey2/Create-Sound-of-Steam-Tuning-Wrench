@@ -11,7 +11,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
-import net.neoforged.neoforge.common.NeoForge;
 
 import java.util.List;
 
@@ -98,6 +97,14 @@ public class PipeUtils {
 
         float yaw = player.getYRot();
 
+        // Convert player yaw to cardinal direction
+        Direction dir;
+
+        if (yaw >= -45 && yaw < 45) dir = Direction.SOUTH;
+        else if (yaw >= 45 && yaw < 135) dir = Direction.WEST;
+        else if (yaw >= -135 && yaw < -45) dir = Direction.EAST;
+        else dir = Direction.NORTH;
+
         switch (mode) {
             case 0,3 -> {
                 if (isOnWall) {
@@ -114,15 +121,6 @@ public class PipeUtils {
 
             case 1, 2, 4, 5 -> {
                 if (!isOnWall) y -= 1;
-
-                // Convert player yaw to cardinal direction
-                Direction dir;
-
-                if (yaw >= -45 && yaw < 45) dir = Direction.SOUTH;
-                else if (yaw >= 45 && yaw < 135) dir = Direction.WEST;
-                else if (yaw >= -135 && yaw < -45) dir = Direction.EAST;
-                else dir = Direction.NORTH;
-
                 if (mode == 1 || mode == 4) {
                     facing = dir;
                     if (isOnWall) {
@@ -154,6 +152,14 @@ public class PipeUtils {
                         player.playNotifySound(AllSoundEvents.DENY.getMainEvent(), player.getSoundSource(), 1, 1);
                         return null;
                     }
+                }
+            } case 6 -> {
+                facing = dir;
+                switch (dir.getOpposite()) {
+                    case NORTH -> z += 2;
+                    case SOUTH -> z -= 2;
+                    case WEST  -> x += 2;
+                    case EAST  -> x -= 2;
                 }
             }
 
