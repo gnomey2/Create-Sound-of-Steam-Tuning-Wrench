@@ -23,7 +23,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v5.0.1
 
       - name: build
-        run: ./gradlew build --offline
+        run: ./gradlew build
 
       - name: upload jar
         uses: actions/upload-artifact@v6
