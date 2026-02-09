@@ -1,0 +1,21 @@
+{
+  "item.tuningwrench.tunerswrench": "Stimmschlüssel",
+  "tooltip.tuningwrench.tunerswrench1": "Halte Alt und scrolle um den Modus zu ändern",
+  "tooltip.tuningwrench.tunerswrench2": "Halte ",
+  "tooltip.tuningwrench.tunerswrench3": " für mehr",
+  "expanded.tooltip.tuningwrench.tunerswrench1": "Traditionell:",
+  "expanded.tooltip.tuningwrench.tunerswrench2": "Konfiguriert Verbindungen so, als ob es sich um eine normale Pfeifenorgel handelt. Jedes Register wird so eingestellt, als ob es ein 8' ist (am besten für das Spielen mit dem Spieltisch)",
+  "expanded.tooltip.tuningwrench.tunerswrench3": "Tonhöhe übernehmen:",
+  "expanded.tooltip.tuningwrench.tunerswrench4": "Übernimmt die Tonhöhe der Pfeife (am besten zum Abspielen von MIDI-Dateien)",
+  "creativetab.tuningwrenchtab": "Tuning Wrench",
+  "modes.tuningwrench.not_usable": "§4Du kannst diesen Modus nicht auf Wandpfeifen nutzen!",
+  "modes.tuningwrench.unknown": "Unbekannt",
+  "modes.tuningwrench.mode": "Modus: ",
+  "modes.tuningwrench.0": "Traditionell Unten",
+  "modes.tuningwrench.1": "Traditionell Wegzeigend",
+  "modes.tuningwrench.2": "Traditionell Hinzeigend",
+  "modes.tuningwrench.3": "Tonhöhe übernehmen Unten",
+  "modes.tuningwrench.4": "Tonhöhe übernehmen Wegzeigend",
+  "modes.tuningwrench.5": "Tonhöhe übernehmen Hinzeigend",
+  "modes.tuningwrench.6": "Tonhöhe übernehmen Dahinter (§4Kann Verbindungen in der Luft platzieren!§r)"
+}
