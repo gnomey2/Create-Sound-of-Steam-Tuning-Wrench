@@ -1,5 +1,21 @@
 {
   "item.tuningwrench.tunerswrench": "Tuning Wrench",
+  "tooltip.tuningwrench.tunerswrench1": "Hold Alt and scroll to change mode",
+  "tooltip.tuningwrench.tunerswrench2": "Hold ",
+  "tooltip.tuningwrench.tunerswrench3": " for more",
+  "expanded.tooltip.tuningwrench.tunerswrench1": "Traditional:",
+  "expanded.tooltip.tuningwrench.tunerswrench2": "Configures links as if it is a normal pipe organ. Every stop will be set as if it is a 8' (best for when playing with keyboard)",
+  "expanded.tooltip.tuningwrench.tunerswrench3": "Match Pitch:",
+  "expanded.tooltip.tuningwrench.tunerswrench4": "Matches the pitch of the pipe (best for playing midi files)",
   "creativetab.tuningwrenchtab": "Tuning Wrench",
-  "chat.tuningwrench.mode_not_usable": "§4You can't use this mode on wall pipes!"
+  "modes.tuningwrench.not_usable": "§4You can't use this mode on wall pipes!",
+  "modes.tuningwrench.unknown": "Unknown",
+  "modes.tuningwrench.mode": "Mode: ",
+  "modes.tuningwrench.0": "Traditional Bottom",
+  "modes.tuningwrench.1": "Traditional Face Away",
+  "modes.tuningwrench.2": "Traditional Face Towards",
+  "modes.tuningwrench.3": "Pitch Match Bottom",
+  "modes.tuningwrench.4": "Pitch Match Face Away",
+  "modes.tuningwrench.5": "Pitch Match Face Towards",
+  "modes.tuningwrench.6": "Pitch Match Behind (§4Can place Link in air!§r)"
 }

@@ -7,6 +7,7 @@ import net.caden.tuningwrench.networking.TuningWrenchPacketHandler;
 import net.caden.tuningwrench.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.event.InputEvent;
@@ -17,16 +18,16 @@ import java.util.Map;
 
 public class TunersWrenchScrollHandler {
 
-    public static final Map<Integer, String> MODE_NAMES = new HashMap<>();
+    public static final Map<Integer, Component> MODE_NAMES = new HashMap<>();
 
     static {
-        MODE_NAMES.put(0, "Traditional Bottom");
-        MODE_NAMES.put(1, "Traditional Face Away");
-        MODE_NAMES.put(2, "Traditional Face Towards");
-        MODE_NAMES.put(3, "Pitch Match Bottom");
-        MODE_NAMES.put(4, "Pitch Match Face Away");
-        MODE_NAMES.put(5, "Pitch Match Face Towards");
-        MODE_NAMES.put(6, "Pitch Match Behind (§4Can place Link in air!)");
+        MODE_NAMES.put(0, Component.translatable("modes.tuningwrench.0"));
+        MODE_NAMES.put(1, Component.translatable("modes.tuningwrench.1"));
+        MODE_NAMES.put(2, Component.translatable("modes.tuningwrench.2"));
+        MODE_NAMES.put(3, Component.translatable("modes.tuningwrench.3"));
+        MODE_NAMES.put(4, Component.translatable("modes.tuningwrench.4"));
+        MODE_NAMES.put(5, Component.translatable("modes.tuningwrench.5"));
+        MODE_NAMES.put(6, Component.translatable("modes.tuningwrench.6"));
     }
 
 

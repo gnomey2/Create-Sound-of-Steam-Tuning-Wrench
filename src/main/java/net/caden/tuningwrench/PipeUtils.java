@@ -148,7 +148,7 @@ public class PipeUtils {
                             case EAST  -> x -= 1;
                         }
                     } else {
-                        player.displayClientMessage(Component.translatable("chat.tuningwrench.mode_not_usable"), true);
+                        player.displayClientMessage(Component.translatable("modes.tuningwrench.not_usable"), true);
                         player.playNotifySound(AllSoundEvents.DENY.getMainEvent(), player.getSoundSource(), 1, 1);
                         return null;
                     }
@@ -169,13 +169,4 @@ public class PipeUtils {
         return new OffsetResult(new BlockPos(x, y, z), facing);
     }
 
-    private static String opposite(String dir) {
-        return switch (dir) {
-            case "north" -> "south";
-            case "south" -> "north";
-            case "east" -> "west";
-            case "west" -> "east";
-            default -> dir;
-        };
-    }
 }
