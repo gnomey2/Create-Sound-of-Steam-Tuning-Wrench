@@ -166,15 +166,24 @@ public class PipeUtils {
 
 
             default -> {
-                if (mode <= customOffsets.size()) {
-                    //TODO
+                if (mode <= customOffsets.size() + 6) {
+                    switch (dir) {
+                        case NORTH -> {
+                            x += customOffsets.get(mode - 7).get(0);
+                            y += customOffsets.get(mode - 7).get(1);
+                            z -= customOffsets.get(mode - 7).get(2);
+                        }
+                        case SOUTH -> {
+                            x -= customOffsets.get(mode - 7).get(0);
+                            y += customOffsets.get(mode - 7).get(1);
+                            z += customOffsets.get(mode - 7).get(2);
+                        }
+                    }
                 } else {
                     throw new IllegalArgumentException("Invalid mode: " + mode);
                 }
             }
         }
-
-
 
         return new OffsetResult(new BlockPos(x, y, z), facing);
     }

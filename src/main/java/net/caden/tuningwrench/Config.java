@@ -22,7 +22,7 @@ public class Config {
         offset = builder
                 .comment("Please see documentation!")
                 .translation("")
-                .defineListAllowEmpty("offset", () -> List.of(List.of(0, 0, 0)), () -> List.of(0, 0, 0), Config::validateCoords);
+                .defineListAllowEmpty("offset", () -> List.of(List.of(0, 0, 0)), () -> List.of(0, 0, 0), Config::yes);
     }
 
     //CONFIG and CONFIG_SPEC are both built from the same builder, so we use a static block to separate the properties
@@ -33,21 +33,6 @@ public class Config {
         //Store the resulting values
         CONFIG = pair.getLeft();
         CONFIG_SPEC = pair.getRight();
-    }
-
-    private static boolean validateCoords(final Object obj) {
-        List<?> rawList = (List<?>) obj; // Cast to List<?> (safe)
-        List<String> t = new ArrayList<>();
-
-        // Check each element before adding
-        for (Object element : rawList) {
-            if (element instanceof String) {
-                break;
-            } else {
-                return false;
-            }
-        }
-        return true;
     }
 
     private static boolean yes(final Object obj) { //Thing doesn't accept plain boolean, needs Predicate
