@@ -14,11 +14,15 @@ import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static net.caden.tuningwrench.Config.CONFIG;
 
 public class TunersWrenchScrollHandler {
 
     public static final Map<Integer, Component> MODE_NAMES = new HashMap<>();
+    private static final List<? extends String> additionalModeNames = CONFIG.names.get();
 
     static {
         MODE_NAMES.put(0, Component.translatable("modes.tuningwrench.0"));
@@ -28,10 +32,13 @@ public class TunersWrenchScrollHandler {
         MODE_NAMES.put(4, Component.translatable("modes.tuningwrench.4"));
         MODE_NAMES.put(5, Component.translatable("modes.tuningwrench.5"));
         MODE_NAMES.put(6, Component.translatable("modes.tuningwrench.6"));
+        for (int i = 0; i < additionalModeNames.size(); i++) {
+            MODE_NAMES.put(i + 7, Component.literal(additionalModeNames.get(i)));
+        }
     }
 
 
-    private static final int MAX_MODES = 7;
+    private static final int MAX_MODES = 7 + additionalModeNames.size();
     private static int mode;
     @SubscribeEvent
     public static void onScroll(InputEvent.MouseScrollingEvent event) {
@@ -50,7 +57,6 @@ public class TunersWrenchScrollHandler {
 
         stack.set(TunersWrenchItem.MODE, mode);
         TuningWrenchPacketHandler.sendToServer(new PacketUpdateWrenchMode(mode));
-
 
         event.setCanceled(true);
     }

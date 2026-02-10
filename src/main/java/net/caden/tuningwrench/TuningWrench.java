@@ -41,6 +41,8 @@ public class TuningWrench {
         modEventBus.addListener(this::commonSetup);
         COMPONENTS.register(modEventBus);
 
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.CONFIG_SPEC);
+
         // Register Custom Events
         modEventBus.addListener(RegisterPayloadHandlersEvent.class, TuningWrenchPacketHandler::register);
         NeoForge.EVENT_BUS.addListener(InputEvent.MouseScrollingEvent.class, TunersWrenchScrollHandler::onScroll);
@@ -51,9 +53,6 @@ public class TuningWrench {
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-
-        //Register config
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
 

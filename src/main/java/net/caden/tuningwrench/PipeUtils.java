@@ -87,7 +87,6 @@ public class PipeUtils {
     }
     public record OffsetResult(BlockPos pos, Direction facing) {}
 
-
     public static OffsetResult getOffsetCoords(int mode, Player player, BlockPos initialPos, boolean isOnWall) {
         int x = initialPos.getX();
         int y = initialPos.getY();
@@ -99,6 +98,8 @@ public class PipeUtils {
 
         // Convert player yaw to cardinal direction
         Direction dir;
+
+        List<? extends List<? extends Integer>> customOffsets = Config.CONFIG.offset.get();
 
         if (yaw >= -45 && yaw < 45) dir = Direction.SOUTH;
         else if (yaw >= 45 && yaw < 135) dir = Direction.WEST;
@@ -158,13 +159,22 @@ public class PipeUtils {
                 switch (dir.getOpposite()) {
                     case NORTH -> z += 2;
                     case SOUTH -> z -= 2;
-                    case WEST  -> x += 2;
-                    case EAST  -> x -= 2;
+                    case WEST -> x += 2;
+                    case EAST -> x -= 2;
                 }
             }
 
-            default -> throw new IllegalArgumentException("Invalid mode: " + mode);
+
+            default -> {
+                if (mode <= customOffsets.size()) {
+                    //TODO
+                } else {
+                    throw new IllegalArgumentException("Invalid mode: " + mode);
+                }
+            }
         }
+
+
 
         return new OffsetResult(new BlockPos(x, y, z), facing);
     }

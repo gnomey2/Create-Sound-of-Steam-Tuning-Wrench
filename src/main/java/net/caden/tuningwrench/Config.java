@@ -1,25 +1,56 @@
 package net.caden.tuningwrench;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class Config {
-    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    //Define a field to keep the config and spec for later
+    public static final Config CONFIG;
+    public static final ModConfigSpec CONFIG_SPEC;
+    public final ModConfigSpec.ConfigValue<List<? extends String>> names;
+    public final ModConfigSpec.ConfigValue<List<? extends List<? extends Integer>>> offset;
 
-    public static final ModConfigSpec.ConfigValue<Integer> MAX_MODES = BUILDER //TODO: make config working
-            .comment("How many modes there are")
-            .define("max_modes", 7);
+    private Config(ModConfigSpec.Builder builder) {
+        names = builder
+                .comment("Names of added modes")
+                .translation("")
+                .defineListAllowEmpty("names", () -> List.of(""), () -> "", Config::yes);
 
+        offset = builder
+                .comment("Please see documentation!")
+                .translation("")
+                .defineListAllowEmpty("offset", () -> List.of(List.of(0, 0, 0)), () -> List.of(0, 0, 0), Config::validateCoords);
+    }
 
-    // a list of strings that are treated as resource locations for items
-    public static final ModConfigSpec.ConfigValue<List<? extends String>> MODES = BUILDER //TODO: make config working
-            .comment("Names of the Modes")
-            .defineListAllowEmpty("modes", List.of("Traditional Bottom", "Traditional Face Away", "Traditional Face Towards", "Pitch Match Bottom", "Pitch Match Face Away", "Pitch Match Face Towards", "Pitch Match Behind (§4Can place Link in air!§r)"), () -> "", Config::validateItemName);
+    //CONFIG and CONFIG_SPEC are both built from the same builder, so we use a static block to separate the properties
+    static {
+        Pair<Config, ModConfigSpec> pair =
+                new ModConfigSpec.Builder().configure(Config::new);
 
-    static final ModConfigSpec SPEC = BUILDER.build();
+        //Store the resulting values
+        CONFIG = pair.getLeft();
+        CONFIG_SPEC = pair.getRight();
+    }
 
-    private static boolean validateItemName(final Object obj) {
-        return obj instanceof String;
+    private static boolean validateCoords(final Object obj) {
+        List<?> rawList = (List<?>) obj; // Cast to List<?> (safe)
+        List<String> t = new ArrayList<>();
+
+        // Check each element before adding
+        for (Object element : rawList) {
+            if (element instanceof String) {
+                break;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean yes(final Object obj) { //Thing doesn't accept plain boolean, needs Predicate
+        return true;
     }
 }
