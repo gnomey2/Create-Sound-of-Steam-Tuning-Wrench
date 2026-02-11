@@ -14,7 +14,7 @@ public class Config {
     public final ModConfigSpec.ConfigValue<List<? extends String>> facing;
 
     private Config(ModConfigSpec.Builder builder) {
-        builder.comment("Please see Documentation! (WIP)");
+        builder.comment("Please see Documentation! (WIP, please ask on #help channel in the CSOS Discord!)");
         builder.comment("General Syntax: [Syntax of Value for mode 7, Syntax of Value for mode 8], etc.");
         names = builder
                 .comment("Names of added modes (Syntax: \"modename\")")
