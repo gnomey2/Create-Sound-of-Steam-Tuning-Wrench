@@ -5,6 +5,10 @@ on:
       - 1.20.1-forge
       - 1.21-neoforge
   workflow_dispatch:
+    pull_request:
+      branches: 
+      - 1.20.1-forge
+      - 1.21-neoforge
 
 jobs:
   build:
