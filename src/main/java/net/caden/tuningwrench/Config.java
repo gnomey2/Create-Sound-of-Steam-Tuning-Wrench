@@ -1,6 +1,5 @@
 package net.caden.tuningwrench;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
@@ -12,17 +11,24 @@ public class Config {
     public static final ModConfigSpec CONFIG_SPEC;
     public final ModConfigSpec.ConfigValue<List<? extends String>> names;
     public final ModConfigSpec.ConfigValue<List<? extends List<? extends Integer>>> offset;
+    public final ModConfigSpec.ConfigValue<List<? extends String>> facing;
 
     private Config(ModConfigSpec.Builder builder) {
+        builder.comment("");
         names = builder
-                .comment("Names of added modes")
+                .comment("Names of added modes (Syntax: ")
                 .translation("")
                 .defineListAllowEmpty("names", () -> List.of(""), () -> "", Config::yes);
 
         offset = builder
-                .comment("Please see documentation!")
+                .comment("Offset from the Pipe")
                 .translation("")
                 .defineListAllowEmpty("offset", () -> List.of(List.of(0, 0, 0)), () -> List.of(0, 0, 0), Config::yes);
+
+        facing = builder
+                .comment("The facing of the link (Syntax: away, towards, right, left, up, down)")
+                .translation("")
+                .defineListAllowEmpty("facing", () -> List.of(""), () -> "", Config::yes);
     }
 
     //CONFIG and CONFIG_SPEC are both built from the same builder, so we use a static block to separate the properties

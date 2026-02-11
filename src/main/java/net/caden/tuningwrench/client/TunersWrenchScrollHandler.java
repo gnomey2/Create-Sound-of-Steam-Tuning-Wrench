@@ -1,6 +1,7 @@
 package net.caden.tuningwrench.client;
 
 
+import net.caden.tuningwrench.TuningWrench;
 import net.caden.tuningwrench.item.custom.TunersWrenchItem;
 import net.caden.tuningwrench.networking.PacketUpdateWrenchMode;
 import net.caden.tuningwrench.networking.TuningWrenchPacketHandler;

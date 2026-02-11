@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.redstone.link.RedstoneLinkBlock;
+import net.caden.tuningwrench.Config;
 import net.caden.tuningwrench.PipeUtils;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -163,7 +164,7 @@ public class TunersWrenchItem extends Item {
             //get mode
             ItemStack held = player.getMainHandItem();
             int mode = held.get(MODE);
-            if (mode < 1 || mode > 6) {
+            if (mode < 1 || mode > 6 + Config.CONFIG.offset.get().size()) {
                 mode = 1;
             }
 
