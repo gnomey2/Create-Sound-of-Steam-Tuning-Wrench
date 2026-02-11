@@ -14,19 +14,20 @@ public class Config {
     public final ModConfigSpec.ConfigValue<List<? extends String>> facing;
 
     private Config(ModConfigSpec.Builder builder) {
-        builder.comment("");
+        builder.comment("Please see Documentation! (WIP)");
+        builder.comment("General Syntax: [Syntax of Value for mode 7, Syntax of Value for mode 8], etc.");
         names = builder
-                .comment("Names of added modes (Syntax: ")
+                .comment("Names of added modes (Syntax: \"modename\")")
                 .translation("")
                 .defineListAllowEmpty("names", () -> List.of(""), () -> "", Config::yes);
 
         offset = builder
-                .comment("Offset from the Pipe")
+                .comment("Offset from the Pipe (Syntax: [offsetX, offsetY, offsetZ])")
                 .translation("")
                 .defineListAllowEmpty("offset", () -> List.of(List.of(0, 0, 0)), () -> List.of(0, 0, 0), Config::yes);
 
         facing = builder
-                .comment("The facing of the link (Syntax: away, towards, right, left, up, down)")
+                .comment("The facing of the link (Syntax: \"away\", \"towards\", \"right\", \"left\", \"up\", \"down\")")
                 .translation("")
                 .defineListAllowEmpty("facing", () -> List.of(""), () -> "", Config::yes);
     }
