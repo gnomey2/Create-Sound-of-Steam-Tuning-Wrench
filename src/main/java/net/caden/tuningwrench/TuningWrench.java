@@ -14,6 +14,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
@@ -40,6 +41,8 @@ public class TuningWrench {
         modEventBus.addListener(this::commonSetup);
         COMPONENTS.register(modEventBus);
 
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.CONFIG_SPEC);
+
         // Register Custom Events
         modEventBus.addListener(RegisterPayloadHandlersEvent.class, TuningWrenchPacketHandler::register);
         NeoForge.EVENT_BUS.addListener(InputEvent.MouseScrollingEvent.class, TunersWrenchScrollHandler::onScroll);
@@ -49,7 +52,8 @@ public class TuningWrench {
         NeoForge.EVENT_BUS.register(this);
 
         // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);    }
+        modEventBus.addListener(this::addCreative);
+    }
 
 
     private void commonSetup(final FMLCommonSetupEvent event) {

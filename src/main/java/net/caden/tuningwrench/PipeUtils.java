@@ -87,7 +87,6 @@ public class PipeUtils {
     }
     public record OffsetResult(BlockPos pos, Direction facing) {}
 
-
     public static OffsetResult getOffsetCoords(int mode, Player player, BlockPos initialPos, boolean isOnWall) {
         int x = initialPos.getX();
         int y = initialPos.getY();
@@ -100,10 +99,14 @@ public class PipeUtils {
         // Convert player yaw to cardinal direction
         Direction dir;
 
+        List<? extends List<? extends Integer>> customOffsets = Config.CONFIG.offset.get();
+        List<? extends String> customFacings = Config.CONFIG.facing.get();
+
         if (yaw >= -45 && yaw < 45) dir = Direction.SOUTH;
         else if (yaw >= 45 && yaw < 135) dir = Direction.WEST;
         else if (yaw >= -135 && yaw < -45) dir = Direction.EAST;
         else dir = Direction.NORTH;
+
 
         switch (mode) {
             case 0,3 -> {
@@ -138,7 +141,7 @@ public class PipeUtils {
                             case EAST  -> x += 1;
                         }
                     }
-                } else { // mode 2
+                } else {
                     if (!isOnWall) {
                         facing = dir.getOpposite();
                         switch (dir) {
@@ -158,12 +161,47 @@ public class PipeUtils {
                 switch (dir.getOpposite()) {
                     case NORTH -> z += 2;
                     case SOUTH -> z -= 2;
-                    case WEST  -> x += 2;
-                    case EAST  -> x -= 2;
+                    case WEST -> x += 2;
+                    case EAST -> x -= 2;
                 }
             }
 
-            default -> throw new IllegalArgumentException("Invalid mode: " + mode);
+            default ->  {
+                if (mode <= customOffsets.size() + 6) {
+                    switch (customFacings.get(mode - 7).toLowerCase()) {
+                        case "up" -> facing = Direction.UP;
+                        case "down" -> facing = Direction.DOWN;
+                        case "away" -> facing = dir;
+                        case "towards" -> facing = dir.getOpposite();
+                        case "right" -> facing = dir.getClockWise();
+                        case "left" -> facing = dir.getCounterClockWise();
+                    }
+                    switch (dir) {
+                        case NORTH -> {
+                            x += customOffsets.get(mode - 7).get(0);
+                            y += customOffsets.get(mode - 7).get(1);
+                            z -= customOffsets.get(mode - 7).get(2);
+                        }
+                        case SOUTH -> {
+                            x -= customOffsets.get(mode - 7).get(0);
+                            y += customOffsets.get(mode - 7).get(1);
+                            z += customOffsets.get(mode - 7).get(2);
+                        }
+                        case WEST -> {
+                            x -= customOffsets.get(mode - 7).get(2);
+                            y += customOffsets.get(mode - 7).get(1);
+                            z -= customOffsets.get(mode - 7).get(0);
+                        }
+                        case EAST -> {
+                            x += customOffsets.get(mode - 7).get(2);
+                            y += customOffsets.get(mode - 7).get(1);
+                            z += customOffsets.get(mode - 7).get(0);
+                        }
+                    }
+                } else {
+                    throw new IllegalArgumentException("Invalid mode: " + mode);
+                }
+            }
         }
 
         return new OffsetResult(new BlockPos(x, y, z), facing);
