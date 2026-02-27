@@ -5,8 +5,10 @@ import com.mojang.serialization.Codec;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.redstone.link.RedstoneLinkBlock;
+import com.simibubi.create.foundation.item.render.SimpleCustomRenderer;
 import net.caden.tuningwrench.Config;
 import net.caden.tuningwrench.PipeUtils;
+import net.caden.tuningwrench.item.render.TunersWrenchItemRenderer;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,10 +35,14 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static net.caden.tuningwrench.TuningWrench.MODID;
@@ -56,6 +62,12 @@ public class TunersWrenchItem extends Item {
 
     public TunersWrenchItem(Properties pProperties) {
         super(pProperties);
+    }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(SimpleCustomRenderer.create(this, new TunersWrenchItemRenderer()));
     }
 
     //custom tooltip
