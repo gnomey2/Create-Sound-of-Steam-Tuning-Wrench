@@ -1,7 +1,7 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
-	"parent": "block/block",
+	"parent": "create:item/wrench/item",
 	"texture_size": [32, 32],
 	"textures": {
         "5": "create:item/wrench",

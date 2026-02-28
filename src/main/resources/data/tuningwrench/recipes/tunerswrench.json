@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": false,
+  "category": "equipment",
+  "pattern": [
+    " A ",
+    " B ",
+    " C "
+  ],
+  "key": {
+    "A": {
+      "item": "pipeorgans:trompette"
+    },
+    "B": {
+      "item": "create:wrench"
+    },
+    "C": {
+      "item": "create:zinc_ingot"
+    }
+  },
+  "result": {
+    "item": "tuningwrench:tunerswrench",
+    "count": 1
+  }
+}

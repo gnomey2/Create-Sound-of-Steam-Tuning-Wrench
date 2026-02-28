@@ -33,10 +33,10 @@ public class TunersWrenchOverlay {
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
 
-        int x = width / 2 - 50;
+        int x = width / 2;
         int y = height - 60;
 
-        event.getGuiGraphics().drawString(mc.font, Component.literal("Mode: " + modeName), x, y, 0xFFFFFF);
+        event.getGuiGraphics().drawCenteredString(mc.font, Component.literal("Mode: " + modeName), x, y, 0xFFFFFF);
 
     }
 }

@@ -129,6 +129,14 @@ public class TunersWrenchItem extends Item {
             CompoundTag tag = blockEntity.saveWithoutMetadata();
             int pitch = tag.getInt("Pitch");
 
+            // get wall pipe
+            Property<?> wallProp = state.getBlock()
+                    .getStateDefinition()
+                    .getProperty("wall");
+            assert wallProp != null; //ARE YOU HAPPY JAVA???
+            Comparable<?> wallPropValue = state.getValue(wallProp);
+            boolean isOnWall = Boolean.parseBoolean(wallPropValue.toString());
+
             //get size
             Property<?> sizeProp = state.getBlock()
                     .getStateDefinition()
@@ -151,7 +159,10 @@ public class TunersWrenchItem extends Item {
 
             //get position of redstone link
             PipeUtils.OffsetResult result =
-                    PipeUtils.getOffsetCoords(mode, player, positionCLicked);
+                    PipeUtils.getOffsetCoords(mode, player, positionCLicked, isOnWall);
+            if (result == null) {
+                return InteractionResult.FAIL;
+            }
 
             BlockPos linkPos = result.pos();
             if(!player.level().isEmptyBlock(linkPos)) {
