@@ -13,7 +13,8 @@ public class ModItems {
             DeferredRegister.create(BuiltInRegistries.ITEM, TuningWrench.MODID);
 
     public static final DeferredHolder<Item, Item> TUNINGWRENCH = ITEMS.register("tunerswrench",
-            () -> new TunersWrenchItem(new Item.Properties()));
+            () -> new TunersWrenchItem(new Item.Properties()
+                    .component(TunersWrenchItem.MODE, 0)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
