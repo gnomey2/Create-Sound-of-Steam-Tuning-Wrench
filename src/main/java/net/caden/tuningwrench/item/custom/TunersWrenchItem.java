@@ -7,7 +7,9 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleBlockEntity;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.redstone.link.RedstoneLinkBlock;
+import com.simibubi.create.foundation.item.render.SimpleCustomRenderer;
 import net.caden.tuningwrench.PipeUtils;
+import net.caden.tuningwrench.item.render.TunersWrenchItemRenderer;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,13 +33,25 @@ import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+
 import java.util.List;
+import java.util.function.Consumer;
+
 import static net.minecraft.ChatFormatting.*;
 
 
 public class TunersWrenchItem extends Item {
     public TunersWrenchItem(Properties pProperties) {
         super(pProperties);
+    }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(SimpleCustomRenderer.create(this, new TunersWrenchItemRenderer()));
     }
 
     //custom tooltip
