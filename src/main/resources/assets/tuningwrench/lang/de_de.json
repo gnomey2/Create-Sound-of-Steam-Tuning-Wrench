@@ -11,6 +11,7 @@
   "modes.tuningwrench.not_usable": "§4Du kannst diesen Modus nicht auf Wandpfeifen nutzen!",
   "modes.tuningwrench.unknown": "Unbekannt",
   "modes.tuningwrench.mode": "Modus: ",
+  "modes.tuningwrench.invalid_mode": "Ungültiger Modus: ",
   "modes.tuningwrench.0": "Traditionell Unten",
   "modes.tuningwrench.1": "Traditionell Wegzeigend",
   "modes.tuningwrench.2": "Traditionell Hinzeigend",

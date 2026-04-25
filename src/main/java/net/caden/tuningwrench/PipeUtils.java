@@ -199,7 +199,7 @@ public class PipeUtils {
                         }
                     }
                 } else {
-                    throw new IllegalArgumentException("Invalid mode: " + mode);
+                    throw new IllegalArgumentException(Component.translatable("modes.tuningwrench.invalid_mode").getString() + mode);
                 }
             }
         }

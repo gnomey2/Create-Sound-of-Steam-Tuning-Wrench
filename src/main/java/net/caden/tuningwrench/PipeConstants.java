@@ -1,6 +1,6 @@
 package net.caden.tuningwrench;
 
-import java.util.*;
+import net.minecraft.network.chat.Component;import java.util.*;
 
 public class PipeConstants {
 

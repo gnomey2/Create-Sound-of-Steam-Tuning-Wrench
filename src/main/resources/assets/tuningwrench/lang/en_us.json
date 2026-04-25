@@ -11,6 +11,7 @@
   "modes.tuningwrench.not_usable": "§4You can't use this mode on wall pipes!",
   "modes.tuningwrench.unknown": "Unknown",
   "modes.tuningwrench.mode": "Mode: ",
+  "modes.tuningwrench.invalid_mode": "Invalid mode: ",
   "modes.tuningwrench.0": "Traditional Bottom",
   "modes.tuningwrench.1": "Traditional Face Away",
   "modes.tuningwrench.2": "Traditional Face Towards",
