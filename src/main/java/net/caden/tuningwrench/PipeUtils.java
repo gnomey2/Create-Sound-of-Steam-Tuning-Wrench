@@ -154,7 +154,7 @@ public class PipeUtils {
                 }
             }
 
-            default -> throw new IllegalArgumentException("Invalid mode: " + mode);
+            default -> throw new IllegalArgumentException("Invalid Mode: " + mode);
         }
 
         return new OffsetResult(new BlockPos(x, y, z), facing);

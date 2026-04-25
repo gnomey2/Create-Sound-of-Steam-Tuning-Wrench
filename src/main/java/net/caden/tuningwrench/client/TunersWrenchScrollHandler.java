@@ -24,12 +24,12 @@ public class TunersWrenchScrollHandler {
     public static final Map<Integer, String> MODE_NAMES = new HashMap<>();
 
     static {
-        MODE_NAMES.put(0, "Traditional Bottom");
-        MODE_NAMES.put(1, "Traditional Face Away");
-        MODE_NAMES.put(2, "Traditional Face Towards");
-        MODE_NAMES.put(3, "Pitch Match Bottom");
-        MODE_NAMES.put(4, "Pitch Match Face Away");
-        MODE_NAMES.put(5, "Pitch Match Face Towards");
+        MODE_NAMES.put(0, Component.translatable("modes.tuningwrench.0").getString());
+        MODE_NAMES.put(1, Component.translatable("modes.tuningwrench.1").getString());
+        MODE_NAMES.put(2, Component.translatable("modes.tuningwrench.2").getString());
+        MODE_NAMES.put(3, Component.translatable("modes.tuningwrench.3").getString());
+        MODE_NAMES.put(4, Component.translatable("modes.tuningwrench.4").getString());
+        MODE_NAMES.put(5, Component.translatable("modes.tuningwrench.5").getString());
     }
 
 

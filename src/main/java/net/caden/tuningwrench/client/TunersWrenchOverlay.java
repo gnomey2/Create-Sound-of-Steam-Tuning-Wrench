@@ -28,7 +28,7 @@ public class TunersWrenchOverlay {
         if (!stack.is(ModItems.TUNINGWRENCH.get())) return;
 
         int mode = stack.getOrCreateTag().getInt("Mode");
-        String modeName = MODE_NAMES.getOrDefault(mode, "Unknown");
+        String modeName = MODE_NAMES.getOrDefault(mode, Component.translatable("modes.tuningwrench.unknown").getString());
 
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
@@ -36,7 +36,7 @@ public class TunersWrenchOverlay {
         int x = width / 2;
         int y = height - 60;
 
-        event.getGuiGraphics().drawCenteredString(mc.font, Component.literal("Mode: " + modeName), x, y, 0xFFFFFF);
+        event.getGuiGraphics().drawCenteredString(mc.font, Component.translatable("modes.tuningwrench.mode").append(modeName), x, y, 0xFFFFFF);
 
     }
 }

@@ -58,25 +58,25 @@ public class TunersWrenchItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
 
-        tooltip.add(Component.literal("Hold Alt and scroll to change mode").withStyle(GRAY));
+        tooltip.add(Component.translatable("tooltip.tuningwrench.tunerswrench1").withStyle(GRAY));
 
         tooltip.add(
-            Component.literal("Hold ").withStyle(DARK_GRAY)
+            Component.translatable("tooltip.tuningwrench.tunerswrench2").withStyle(DARK_GRAY)
                     .append(
                             Component.literal("[SHIFT]")
                                     .withStyle(Screen.hasShiftDown() ? WHITE : GRAY)
                     )
                     .append(
-                            Component.literal(" for more")
+                            Component.translatable("tooltip.tuningwrench.tunerswrench3")
                                     .withStyle(DARK_GRAY)
                     )
         );
         //shift extra info
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.literal("Traditional:").withStyle(GRAY));
-            tooltip.add(Component.literal("Configures links as if it is a normal pipe organ. Every stop will be set as if it is a 8' (best for when playing with keyboard)").withStyle(style -> style.withColor(TextColor.fromRgb(0xC7954B))));
-            tooltip.add(Component.literal("Match Pitch:").withStyle(GRAY));
-            tooltip.add(Component.literal("Matches the pitch of the pipe (best for playing midi files)").withStyle(style -> style.withColor(TextColor.fromRgb(0xC7954B))));
+            tooltip.add(Component.translatable("expanded.tooltip.tuningwrench.tunerswrench1").withStyle(GRAY));
+            tooltip.add(Component.translatable("expanded.tooltip.tuningwrench.tunerswrench2").withStyle(style -> style.withColor(TextColor.fromRgb(0xC7954B))));
+            tooltip.add(Component.translatable("expanded.tooltip.tuningwrench.tunerswrench3").withStyle(GRAY));
+            tooltip.add(Component.translatable("expanded.tooltip.tuningwrench.tunerswrench4").withStyle(style -> style.withColor(TextColor.fromRgb(0xC7954B))));
 
         }
     }
