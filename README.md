@@ -8,7 +8,7 @@ TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link i
 
 # Requirements
 
-- Minecraft Neoorge 1.21.1
+- Minecraft Neoforge 1.21.1
 - Create 6
 - Sound of Steam (theoretically any version that's compatible with the above, but un-tested)
 
