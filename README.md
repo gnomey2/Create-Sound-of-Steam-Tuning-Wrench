@@ -1,7 +1,45 @@
-It's finally here! the moment you've all been waiting for, the one, the only the jar of happiness and all joy, Create: Sound of Steam: Tuning Wrench(es) is here.
-It can be used to place on the bottom or side facing towards or away from the player (select with alt+scroll) and between pretending everything is 8' for keyboard playing and matching the actual pitch for midi playing. Usage example: ⁠showcase⁠
-hold shift when hovering over the wrench for more info
-currently only works on 1.20.1. Once I finish, Anonym or I will port it to 1.21. Does not work with base create whistles. Survival friendly except it doesn't have a crafting recipe yet, sorry.
-I plan on releasing new versions soon™ that will make it better™. Updates will be on GitHub probably™
+<p align="center"><img width="180" height="180" alt="New_Create_Logo_Background" src="https://github.com/user-attachments/assets/cf4afd90-1e0d-449c-a7d3-6d13016d8fc0" /></p>
+<h1 align="center">Create: Sound of Steam: Tuning Wrench </h1>
 
-Update: Ported to 1.21.1 and Works with base create whistles now
+<b>A survival friendly addon for sound of steam that lets you set redstone link channels automatically
+
+TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link is placed underneath.</b>
+
+
+# Requirements
+
+- Minecraft Forge 1.20.1
+- Create 6
+- Sound of Steam (theoretically any version that's compatible with the above, but un-tested)
+
+# Usage
+
+1. Crafting:
+<img width="463" height="222" alt="Screenshot 2026-01-04 184852" src="https://github.com/user-attachments/assets/b2a3ab6f-dfb6-4c59-8b84-7e0bc8ae43fb"/>
+
+2. Right-click any Sound of Steam pipe with the wrench.
+3. A Create redstone link is will be placed two blocks below the pipe, set to recieve and with the correct frequency.
+
+
+**Survival Use:** the wrench will take redstone links from your inventory when using. It will not work if there are none left.
+
+# Future Plans
+
+* Replacing existing links
+* Mutations
+* Ponder if necessary
+
+
+# Known Issues
+
+* A piccolo with no extensions will not get its second channel set correctly
+* Unknown issues™™™™™™™™™™
+
+
+# Credits
+Thank you to ABathInThyme for writing the original script and lots of KubeJs help!
+Thank you to Anonym3000 for porting to 1.21.1!
+
+
+
+
