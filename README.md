@@ -17,6 +17,7 @@ TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link i
 1. Crafting:
 <img width="463" height="222" alt="Screenshot 2026-01-04 184852" src="https://github.com/user-attachments/assets/b2a3ab6f-dfb6-4c59-8b84-7e0bc8ae43fb" />
 
+
 3. Right-click any Sound of Steam pipe with the wrench.
 4. A Create redstone link is will be placed two blocks below the pipe, set to recieve and with the correct frequency.
 
