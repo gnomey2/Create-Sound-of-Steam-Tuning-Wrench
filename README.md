@@ -15,13 +15,11 @@ TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link i
 # Usage
 
 1. Crafting:
-<img width="463" height="222" alt="Screenshot 2026-01-04 184852" src="https://github.com/user-attachments/assets/b2a3ab6f-dfb6-4c59-8b84-7e0bc8ae43fb" />
+<img width="463" height="222" alt="Screenshot 2026-01-04 184852" src="https://github.com/user-attachments/assets/b2a3ab6f-dfb6-4c59-8b84-7e0bc8ae43fb"/>
 
+2. Right-click any Sound of Steam pipe with the wrench.
+3. A Create redstone link is will be placed two blocks below the pipe, set to recieve and with the correct frequency.
 
-3. Right-click any Sound of Steam pipe with the wrench.
-4. A Create redstone link is will be placed two blocks below the pipe, set to recieve and with the correct frequency.
-
-Note: this is intended to be used with the windchests. it will not work with fluid tanks becaues it replaces the heat source
 
 **Survival Use:** the wrench will take redstone links from your inventory when using. It will not work if there are none left.
 
