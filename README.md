@@ -8,38 +8,9 @@ TL;DR: Right-click a pipe with the wrench, and a correctly tuned redstone link i
 
 # Requirements
 
-- Minecraft Forge 1.20.1
-- KubeJS 1.20.1
+- Minecraft Neoorge 1.21.1
 - Create 6
 - Sound of Steam (theoretically any version that's compatible with the above, but un-tested)
-
-# Version
-
-If you want the 1.21 version, first go to the top right of this page, and click the button that says 1.20, and in the dropdown, select 1.21 
-<img width="170" height="155" alt="image" src="https://github.com/user-attachments/assets/ce789a91-5f1f-4d37-8034-aa1f64ce3f37" />
-
-then proceeed with the rest of the instructions
-
-# Installation
-
-2. Download this package.
-3. Copy the included `kubejs/` folder into your instance or server root.
-
-**Do not put this in the mods folder.**
-
-# Dtailed instructions for curseforge:
-1. Download from github by clicking the green <>code button at the top of this page and in the menu download zip
-2. Install KubeJS to the profile
-3. Open folder
-<img width="400" height="264" alt="image" src="https://github.com/user-attachments/assets/4ed1db71-a2ed-4f22-9a92-0131617e764b" />
-
-4. Extract the zip folder to this directory
-5. It should look like this (if you have already run the game, there will be more folders.)
-
-<img width="428" height="128" alt="image" src="https://github.com/user-attachments/assets/f72c705b-9a51-4440-88e6-e075a994c918" />
-
-
-
 
 # Usage
 
@@ -55,7 +26,6 @@ Note: this is intended to be used with the windchests. it will not work with flu
 
 # Future Plans
 
-* Placing links on sides of windchests
 * Replacing existing links
 * Mutations
 * Ponder if necessary
@@ -69,6 +39,7 @@ Note: this is intended to be used with the windchests. it will not work with flu
 
 # Credits
 Thank you to ABathInThyme for writing the original script and lots of KubeJs help!
+Thank you to Anonym3000 for porting to 1.21.1!
 
 
 
