@@ -1,0 +1,25 @@
+{
+  "values": [
+    "pipeorgans:diapason_extension",
+    "pipeorgans:haunted_whistle_extension",
+    "pipeorgans:prestant_extension",
+    "pipeorgans:gamba_extension",
+    "pipeorgans:gedeckt_extension",
+    "pipeorgans:hohlflute_extension",
+    "pipeorgans:rohrflote_extension",
+    "pipeorgans:nasard_extension",
+    "pipeorgans:tierce_extension",
+    "pipeorgans:piccolo_extension",
+    "pipeorgans:posaune_extension",
+    "pipeorgans:bassoon_extension",
+    "pipeorgans:subbass_extension",
+    "pipeorgans:open_wood_extension",
+    "pipeorgans:trompette_extension",
+    "pipeorgans:chamade_extension",
+    "pipeorgans:krummhorn_extension",
+    "pipeorgans:english_horn_extension",
+    "pipeorgans:viola_extension",
+    "pipeorgans:vox_celeste_extension",
+    "pipeorgans:vox_humana_extension"
+  ]
+}

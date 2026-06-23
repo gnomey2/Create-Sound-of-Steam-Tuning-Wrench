@@ -4,10 +4,12 @@ import com.finchy.pipeorgans.init.AllTags;
 import com.mojang.serialization.Codec;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllSoundEvents;
+import com.simibubi.create.Create;
 import com.simibubi.create.content.redstone.link.RedstoneLinkBlock;
 import com.simibubi.create.foundation.item.render.SimpleCustomRenderer;
-import net.caden.tuningwrench.Config;
 import net.caden.tuningwrench.PipeUtils;
+import net.caden.tuningwrench.TuningWrench;
 import net.caden.tuningwrench.item.render.TunersWrenchItemRenderer;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -21,7 +23,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -37,6 +39,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
@@ -136,14 +139,21 @@ public class TunersWrenchItem extends Item {
                 }
                 //player.sendSystemMessage(Component.literal(""));
             }
-
-            //get the tag for the expanded steam whistle without breaking everything
-            TagKey<Block> EXPANDED_STEAM_WHISTLE =
-                    BlockTags.create(ResourceLocation.fromNamespaceAndPath("expanded_steam_whistles", "feeling_valid"));
-            if (blockEntity == null || !(blockEntity.getBlockState().is(AllTags.AllBlockTags.VALID_WHISTLE.tag)
+            net.deano.expanded_steam_whistles.init.AllTags.AllBlockTags EXPANDED_STEAM_WHISTLE = null;
+            if (ModList.get().isLoaded("expanded_steam_whistles")) {
+                EXPANDED_STEAM_WHISTLE = net.deano.expanded_steam_whistles.init.AllTags.AllBlockTags.FEELING_VALID;
+                TuningWrench.LOGGER.debug("Is loaded!");
+            }
+            final TagKey<Block> VALID_EXTENSIONS = TagKey.create(
+                    Registries.BLOCK,
+                    ResourceLocation.fromNamespaceAndPath("tuningwrench", "valid_whistle_extensions")
+            );
+            if (blockEntity == null || !(blockEntity.getBlockState().is(AllTags.AllBlockTags.VALID_WHISTLE.tag) || blockEntity.getBlockState().is(VALID_EXTENSIONS))
                     || blockEntity.getType() == AllBlockEntityTypes.STEAM_WHISTLE.get()
-                    || state.is(EXPANDED_STEAM_WHISTLE))) {
+                    || state.is(EXPANDED_STEAM_WHISTLE != null ? EXPANDED_STEAM_WHISTLE.tag : null)) {
                 return InteractionResult.FAIL;
+            } else {
+                TuningWrench.LOGGER.debug("IS VALID");
             }
             //get name
             Block block = state.getBlock();
@@ -212,7 +222,7 @@ public class TunersWrenchItem extends Item {
         Player player = pContext.getPlayer();
         BlockState state = level.getBlockState(pos);
 
-        if (!(level instanceof net.minecraft.server.level.ServerLevel serverLevel))
+        if (!(level instanceof ServerLevel serverLevel))
             return InteractionResult.SUCCESS;
 
         if (player != null && !player.isCreative()) {
@@ -225,9 +235,9 @@ public class TunersWrenchItem extends Item {
         state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, true);
         level.destroyBlock(pos, false);
 
-        com.simibubi.create.AllSoundEvents.WRENCH_REMOVE
+        AllSoundEvents.WRENCH_REMOVE
                 .playOnServer(level, pos, 1f,
-                        com.simibubi.create.Create.RANDOM.nextFloat() * 0.5f + 0.5f);
+                        Create.RANDOM.nextFloat() * 0.5f + 0.5f);
 
         return InteractionResult.SUCCESS;
     }
